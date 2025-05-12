@@ -4,8 +4,16 @@
 #include <pthread.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <sys/time.h>
 
-
+typedef struct s_table
+{
+	int					num_of_philos;
+	long long			start_time;
+	pthread_mutex_t		*forks;
+	t_philo				*philos;
+	
+}				t_table;
 typedef struct philo
 {
 	pthread_t				thread;
@@ -14,21 +22,17 @@ typedef struct philo
     int						meals_eaten;
     long long				last_meal;
     int						is_dead; 
-	int						fork[2];
-	pthread_mutex_t			mutex;
-	t_table					*data;
-}	t_philo;
+	pthread_mutex_t			*l_fork;
+	pthread_mutex_t			*r_fork;
+	int						time_to_die;
+	int						time_to_eat;
+	int						time_to_sleep;
+	int						number_of_meals;
+}				t_philo;
 
 
-typedef struct s_table
-{
-	int			total_forks;
-	int			number_of_meals;
-	int			time_to_die;
-	int			time_to_eat;Ñ
-	int			time_to_sleep;
-	long long	start_time;
-} t_table;
 
+
+long long	ft_atoll(char *s);
 
 #endif
