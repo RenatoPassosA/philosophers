@@ -60,5 +60,4 @@ void    start_data(char **av)
 
     start_table(av, &table);
     start_philos(av, &table, table.philos);
-    
 }
