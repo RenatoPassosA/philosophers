@@ -11,14 +11,13 @@ typedef struct s_table
 	int					num_of_philos;
 	long long			start_time;
 	pthread_mutex_t		*forks;
-	t_philo				*philos;
-	
+	pthread_mutex_t		print_action;
+		
 }				t_table;
 typedef struct philo
 {
 	pthread_t				thread;
     int						id;
-    int						actual_action;
     int						meals_eaten;
     long long				last_meal;
     int						is_dead; 
@@ -28,11 +27,14 @@ typedef struct philo
 	int						time_to_eat;
 	int						time_to_sleep;
 	int						number_of_meals;
+	t_table					*table;
 }				t_philo;
 
 
 
 
 long long	ft_atoll(char *s);
+long long	get_timestamp_ms(void);
+int			ft_strcmp(char *s1, char *s2);
 
 #endif
