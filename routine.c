@@ -20,7 +20,12 @@ static void	mutex_print(t_philo *philo, char *action)
 		printf("%ld %d is thinking", get_timestamp_ms(), philo->id);
 		pthread_mutex_unlock(&philo->table->print_action);
 	}
-	
+	else if (ft_strncmp(action, "taken a fork") == 0)
+	{
+		pthread_mutex_lock(&philo->table->print_action);
+		printf("%ld %d has taken a fork", get_timestamp_ms(), philo->id);
+		pthread_mutex_unlock(&philo->table->print_action);
+	}
 }
 
 static void	lock_forks(t_philo *philo)
@@ -28,14 +33,16 @@ static void	lock_forks(t_philo *philo)
 	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->l_fork);
-		printf("%ld %d has taken a fork", get_timestamp_ms(), philo->id);
-		pthread_mutex_unlock(philo->r_fork);
+		mutex_print(philo, "taken a fork");
+		pthread_mutex_lock(philo->r_fork);
+		mutex_print(philo, "taken a fork");
 	}
 	else
 	{
 		pthread_mutex_lock(philo->r_fork);
-		printf("%ld %d has taken a fork", get_timestamp_ms(), philo->id);
-		pthread_mutex_unlock(philo->l_fork);
+		mutex_print(philo, "taken a fork");
+		pthread_mutex_lock(philo->l_fork);
+		mutex_print(philo, "taken a fork");
 	}
 }
 
