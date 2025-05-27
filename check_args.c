@@ -47,7 +47,7 @@ bool	check_args(int ac, char **av)
 	int	index;
 
 	index = 1;
-	if (ac != 5 || ac != 6)
+	if (ac != 5 && ac != 6)
 		exit_error_msg("Wrong arguments");
 	while (index < ac)
 	{

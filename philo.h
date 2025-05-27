@@ -13,16 +13,16 @@ typedef struct s_philo t_philo;
 
 typedef struct s_table
 {
-	int					num_of_philos;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
-	int					number_of_meals;
-	long long			start_time;
-	long long			end_time;
-	pthread_mutex_t		*forks;
-	pthread_mutex_t		print_action;
-	t_philo				*philos;
+	int							num_of_philos;
+	long long					time_to_die;
+	long long					time_to_eat;
+	long long					time_to_sleep;
+	int							number_of_meals;
+	long long					start_time;
+	bool						end_dinner;
+	pthread_mutex_t				*forks;
+	pthread_mutex_t				print_action;
+	t_philo						*philos;
 		
 }				t_table;
 typedef struct s_philo

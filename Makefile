@@ -51,6 +51,6 @@ run: re
 	./$(NAME) $(NUMBERS)
 
 compile:
-	$(CC) main.c check_args.c start_data.c utils.c -g
+	$(CC) main.c check_args.c start_data.c utils.c -o $(NAME) -g
 
 .PHONY: all bonus clean fclean

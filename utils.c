@@ -6,7 +6,7 @@
 /*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:56:54 by rpassos-          #+#    #+#             */
-/*   Updated: 2025/05/27 16:17:35 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/05/27 18:36:52 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,13 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
+void	set_thread(pthread_t *thread, void *(*func)(void *), void *data, char *type)
+{
+	if (ft_strcmp(type, "CREATE") == 0)
+		pthread_create(thread, NULL, func, NULL);
+	else if (ft_strcmp(type, "JOIN") == 0)
+		pthread_join(*thread, NULL);
+	else if (ft_strcmp(type, "DETACH") == 0)
+		pthread_detach(*thread);
+}// criar o handle de error
