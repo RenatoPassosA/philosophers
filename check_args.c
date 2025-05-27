@@ -3,33 +3,23 @@
 long long	ft_atoll(char *s)
 {
 	long long int	result;
-	int				minus_sign;
-
-	minus_sign = 0;
+	
 	result = 0;
 	while (*s)
 	{
-		while (*s == 32 || (*s >= 9 && *s <= 13))
+		while (*s == 32)
 			s++;
-		if (*s == '+' || *s == '-')
-		{
-			if (*s == '-')
-				minus_sign = 1;
-			s++;
-		}
 		while (*s >= '0' && *s <= '9')
 		{
 			result = result * 10 + (*s - '0');
 			s++;
 		}
-		if (minus_sign)
-			return (result * -1);
 		return (result);
 	}
 	return (0);
 }
 
-bool	is_only_num(char *str)
+static bool	is_only_num(char *str)
 {
 	if (!*str)
 		return (false);
@@ -42,27 +32,37 @@ bool	is_only_num(char *str)
 	return (true);
 }
 
+static bool	check_value(long long value)
+{
+	if (value < INT_MIN)
+		return(false);
+	if (value > INT_MAX)
+		return(false);
+	if (value < 0)
+		return(false);
+}
+
 bool	check_args(int ac, char **av)
 {
 	int	index;
 
 	index = 1;
-	if (ac < 4 || ac > 5)
-		return (false);
+	if (ac != 5 || ac != 6)
+		exit_error_msg("Wrong arguments");
 	while (index < ac)
 	{
 		if (!is_only_num(av[index]))
-			return (false);
+			exit_error_msg("Only numbers allowed");
 		index++;
 	}
 	index = 1;
 	while (index < ac - 1)
 	{
-		if (ft_atoll(av[index]) <= 0)
-			return (false);
+		if (check_value(ft_atoll(av[index])))
+			exit_error_msg("Args out of correct range");
 		index++;
 	}
 	if (av[5] && ft_atoll(av[5]) < 0)
-		return (false);
+		exit_error_msg("Number of meals out of correct range");
 	return (true);
 }

@@ -6,11 +6,17 @@
 /*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:56:54 by rpassos-          #+#    #+#             */
-/*   Updated: 2025/05/22 15:58:23 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:17:35 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	exit_error_msg(char *str)	
+{
+	printf("%s\n", str);
+	exit(EXIT_FAILURE);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
