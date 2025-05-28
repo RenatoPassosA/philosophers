@@ -27,6 +27,7 @@ static void    start_philos(char **av, t_table *table, t_philo *philos)
         	philos[index].r_fork = &table->forks[index]; 
         	philos[index].l_fork = &table->forks[(index + 1) % table->num_of_philos];
 		}
+        pthread_mutex_init(&philos->philo_mutex, NULL);
         philos[index].table = table;
         index++;
     }
@@ -47,15 +48,17 @@ void    start_table(char **av, t_table *table, t_philo *philos)
 		table->number_of_meals = -1;
     table->start_time = get_timestamp_ms();
 	table->end_dinner = false;
+    table->all_threads_ready = false;
     table->forks = malloc(sizeof(pthread_mutex_t) * table->num_of_philos);
     if (!table->forks)
 	{
 		free(philos);
         exit_error_msg("Allocation Failed");;
 	}
-    pthread_mutex_init(&table->print_action, NULL);
+    pthread_mutex_init(&table->table_mutex, NULL); //encapsular para tratar erro em caso de criação
+    pthread_mutex_init(&table->print_action, NULL); //encapsular para tratar erro em caso de criação
     while (++index < table->num_of_philos)
-        pthread_mutex_init(&table->forks[index], NULL);
+        pthread_mutex_init(&table->forks[index], NULL); //encapsular para tratar erro em caso de criação
     start_philos(av, table, philos);
 }
 

@@ -1,0 +1,23 @@
+#include "philo.h"
+
+void    print_status(t_philo_status status, t_philo *philo)
+{
+    long long   elapsed;
+
+    elapsed = get_timestamp_ms - philo->table->start_time;
+    if (philo->is_full)
+        return ;
+    pthread_mutex_lock(&philo->table->print_action);
+	if ((status == TAKE_FIRST_FORK || status == TAKE_SECOND_FORK) 
+        && !simulation_finished(philo->table))
+        printf("%-6lld %d has taken a fork\n", elapsed, philo->id);
+    else if (status == EATING && !simulation_finished(philo->table))
+        printf("%-6lld %d is eating\n", elapsed, philo->id);
+    else if (status == SLEEPING && !simulation_finished(philo->table))
+        printf("%-6lld %d is sleeping\n", elapsed, philo->id);
+    else if (status == THINKING && !simulation_finished(philo->table))
+        printf("%-6lld %d is thinking\n", elapsed, philo->id);
+    else if (status == DIED)
+        printf("%-6lld %d died\n", elapsed, philo->id);
+	pthread_mutex_unlock(&philo->table->print_action);
+}
