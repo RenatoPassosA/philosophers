@@ -1,6 +1,6 @@
 NAME = philosophers
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g -ggdb
 SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_data.o start_dinner.o sync_utils.o utils.o
 
 
@@ -51,6 +51,6 @@ run: re
 	./$(NAME) $(NUMBERS)
 
 compile:
-	$(CC) main.c check_args.c start_data.c utils.c -o $(NAME) -g
+	$(CC) main.c check_args.c getters_and_setters.c print_message.c routine.c start_data.c start_dinner.c sync_utils.c utils.c -o $(NAME) -g
 
 .PHONY: all bonus clean fclean

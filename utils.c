@@ -6,7 +6,7 @@
 /*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:56:54 by rpassos-          #+#    #+#             */
-/*   Updated: 2025/05/28 17:49:05 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/05/28 18:11:44 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	set_thread(pthread_t *thread, void *(*func)(void *), void *data, char *type
 	
 	if (ft_strcmp(type, "CREATE") == 0)
 	{
-		ret = pthread_create(thread, NULL, func, NULL);
+		ret = pthread_create(thread, NULL, func, data);
 		if (ret)
 		{
 			//destruir todos os threads criados até agora

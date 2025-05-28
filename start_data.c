@@ -69,5 +69,6 @@ void    start_data(t_table *table, char **av)
     philos = malloc(sizeof(t_philo) * ft_atoll(av[1]));
     if (!philos)
         exit_error_msg("Allocation Failed");
+    table->philos = philos;
     start_table(av, table, philos);
 }

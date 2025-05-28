@@ -5,6 +5,10 @@ void	start_dinner(t_table *table)
 	int	index;
 
 	index = -1;
+	/*if (!table || !table->philos)
+		exit_error_msg("Tabela ou filósofos não alocados.");
+	if (!&table->philos[index])
+		exit_error_msg("Filósofo não alocado.");*/
 	if (table->number_of_meals == 0)
 		return ;
 	else if (table->num_of_philos == 1)
