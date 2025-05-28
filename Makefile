@@ -1,7 +1,7 @@
 NAME = philosophers
 CC = cc
 CCFLAGS = -Wall -Wextra -Werror
-SRC = main.o check_args.o start_data.o utils.o
+SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_data.o start_dinner.o sync_utils.o utils.o
 
 
 
@@ -37,7 +37,7 @@ $(NAME): $(SRC)
 	$(CC) $(CCFLAGS) -o $(NAME) $(SRC) -g
 
 .o:.c
-	$(CC) $(CCFLAGS) -c $< -o $@
+	$(CC) $(CCFLAGS) -c $< -o $@ -lpthread
 
 clean:
 	rm -f $(SRC)

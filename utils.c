@@ -6,7 +6,7 @@
 /*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:56:54 by rpassos-          #+#    #+#             */
-/*   Updated: 2025/05/28 16:44:20 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:49:05 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	precise_usleep(long usec, t_table *table)
 	start = get_timestamp_ms();
 	while (1)
 	{
-		if (get_bool(&table->end_dinner, &table->end_dinner))
+		if (get_bool(&table->table_mutex, &table->end_dinner))
 			break;
 		now = get_timestamp_ms();
 		if ((now - start) * 1000 >= usec)

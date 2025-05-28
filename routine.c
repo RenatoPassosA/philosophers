@@ -17,14 +17,19 @@ static void	eat(t_philo *philo)
 	pthread_mutex_unlock(philo->l_fork);
 }
 
-void	routine(void *arg)
+void	*routine(void *arg)
 {
 	t_philo *philo = (t_philo *)arg;
 
-	wait_threads_creation(&philo->table);
+	wait_threads_creation(philo->table);
 	while (1)
 	{
-		
+		if (philo->is_full)
+			break;
+		eat(philo);
+		print_status(SLEEPING, philo);
+		precise_usleep(philo->table->time_to_sleep, philo->table);
+		print_status(THINKING, philo);
 	}
-	return ;
+	return (NULL);
 }

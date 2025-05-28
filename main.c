@@ -20,11 +20,12 @@ int	main(int ac, char **av)
 
 	check_args(ac, av);
 	start_data(&table, av);
-	printf("%lld \n", table.start_time);
+	start_dinner(&table);
+	/*printf("%lld \n", table.start_time);
 	printf("%lld \n", table.time_to_die);
 	printf("%lld \n", table.time_to_eat);
 	printf("%lld \n", table.time_to_sleep);
 	if (av[5])
-		printf("%d \n", table.number_of_meals);
+		printf("%d \n", table.number_of_meals);*/
 	return (0);
 }

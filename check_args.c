@@ -40,6 +40,7 @@ static bool	check_value(long long value)
 		return(false);
 	if (value < 0)
 		return(false);
+	return (true);
 }
 
 bool	check_args(int ac, char **av)
@@ -58,7 +59,7 @@ bool	check_args(int ac, char **av)
 	index = 1;
 	while (index < ac - 1)
 	{
-		if (check_value(ft_atoll(av[index])))
+		if (!check_value(ft_atoll(av[index])))
 			exit_error_msg("Args out of correct range");
 		index++;
 	}

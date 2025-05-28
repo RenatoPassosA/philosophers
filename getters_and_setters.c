@@ -17,7 +17,7 @@ bool    get_bool(pthread_mutex_t *mutex, bool *value)
     return (value);
 }
 
-void    set_llong(pthread_mutex_t *mutex, bool *dest, bool value)
+void    set_llong(pthread_mutex_t *mutex, long long  *dest, long long  value)
 {
     pthread_mutex_lock(mutex);
 	*dest = value;
@@ -31,7 +31,7 @@ long long    get_llong(pthread_mutex_t *mutex, bool *value)
     pthread_mutex_lock(mutex);
 	ret = *value;
 	pthread_mutex_unlock(mutex);
-    return (value);
+    return (ret);
 }
 
 bool    simulation_finished(t_table *table)

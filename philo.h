@@ -52,8 +52,10 @@ typedef enum e_status
 }			t_philo_status;
 
 long long	ft_atoll(char *s);
+void		*routine(void *arg);
 long long	get_timestamp_ms(void);
 void		exit_error_msg(char *str);
+void		start_dinner(t_table *table);
 bool		check_args(int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);
 bool		simulation_finished(t_table *table);
@@ -64,7 +66,7 @@ bool		get_bool(pthread_mutex_t *mutex, bool *value);
 long long   get_llong(pthread_mutex_t *mutex, bool *value);
 void	    print_status(t_philo_status status, t_philo *philo);
 void		set_bool(pthread_mutex_t *mutex, bool *dest, bool value);
-void		set_llong(pthread_mutex_t *mutex, bool *dest, bool value);
+void    	set_llong(pthread_mutex_t *mutex, long long  *dest, long long  value);
 void		set_thread(pthread_t *thread, void *(*func)(void *), void *data, char *type);
 
 #endif
