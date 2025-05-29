@@ -1,7 +1,7 @@
 NAME = philosophers
 CC = cc
 CCFLAGS = -Wall -Wextra -Werror -g -ggdb
-SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_data.o start_dinner.o sync_utils.o utils.o
+SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_data.o start_dinner.o sync_utils.o monitor.o utils.o
 
 
 

@@ -54,6 +54,7 @@ typedef enum e_status
 long long	ft_atoll(char *s);
 void		*routine(void *arg);
 long long	get_timestamp_ms(void);
+void    	monitor(t_table *table);
 void		exit_error_msg(char *str);
 void		start_dinner(t_table *table);
 bool		check_args(int ac, char **av);
