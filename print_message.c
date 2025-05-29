@@ -8,7 +8,7 @@ void    print_status(t_philo_status status, t_philo *philo)
     if (philo->is_full)
         return ;
     pthread_mutex_lock(&philo->table->print_action);
-	if ((status == TAKE_FIRST_FORK || status == TAKE_SECOND_FORK) 
+	if ((status == TAKE_RIGHT_FORK || status == TAKE_LEFT_FORK) 
         && !simulation_finished(philo->table))
         printf("%-6lld %lld has taken a fork\n", elapsed, philo->id);
     else if (status == EATING && !simulation_finished(philo->table))
@@ -17,7 +17,10 @@ void    print_status(t_philo_status status, t_philo *philo)
         printf("%-6lld %lld is sleeping\n", elapsed, philo->id);
     else if (status == THINKING && !simulation_finished(philo->table))
         printf("%-6lld %lld is thinking\n", elapsed, philo->id);
-    else if (status == DIED)
+    else if (status == DIED  && !simulation_finished(philo->table))
+    {
         printf("%-6lld %lld died\n", elapsed, philo->id);
-	pthread_mutex_unlock(&philo->table->print_action);
+        set_bool(&philo->table->table_mutex, &philo->table->end_dinner, true);
+    }
+    pthread_mutex_unlock(&philo->table->print_action);
 }

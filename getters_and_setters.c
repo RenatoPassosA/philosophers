@@ -14,7 +14,7 @@ bool    get_bool(pthread_mutex_t *mutex, bool *value)
     pthread_mutex_lock(mutex);
 	ret = *value;
 	pthread_mutex_unlock(mutex);
-    return (value);
+    return (ret);
 }
 
 void    set_llong(pthread_mutex_t *mutex, long long  *dest, long long  value)

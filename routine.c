@@ -3,10 +3,9 @@
 static void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
-	print_status(TAKE_FIRST_FORK, philo);
+	print_status(TAKE_RIGHT_FORK, philo);
 	pthread_mutex_lock(philo->l_fork);
-	print_status(TAKE_SECOND_FORK, philo);
-
+	print_status(TAKE_LEFT_FORK, philo);
 	set_llong(&philo->philo_mutex, &philo->last_meal_time, get_timestamp_ms());
 	philo->meals_eaten++;
 	print_status(EATING, philo);

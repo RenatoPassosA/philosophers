@@ -5,15 +5,10 @@ void	start_dinner(t_table *table)
 	int	index;
 
 	index = -1;
-	/*if (!table || !table->philos)
-		exit_error_msg("Tabela ou filósofos não alocados.");
-	if (!&table->philos[index])
-		exit_error_msg("Filósofo não alocado.");*/
 	if (table->number_of_meals == 0)
 		return ;
 	else if (table->num_of_philos == 1)
 		; //create func
-	
 	while (++index < table->num_of_philos)
 		set_thread(&table->philos[index].thread, routine, &table->philos[index], "CREATE");
 	table->start_time = get_timestamp_ms();

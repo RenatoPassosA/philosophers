@@ -30,8 +30,8 @@ typedef struct s_table
 typedef struct s_philo
 {
 	pthread_t				thread;
-    long long						id;
-    long long						meals_eaten;
+    long long				id;
+    long long				meals_eaten;
     long long				last_meal_time;
     bool					is_dead; 
 	bool					is_full;
@@ -46,8 +46,8 @@ typedef enum e_status
 	EATING,
 	SLEEPING,
 	THINKING,
-	TAKE_FIRST_FORK,
-	TAKE_SECOND_FORK,
+	TAKE_RIGHT_FORK,
+	TAKE_LEFT_FORK,
 	DIED,
 }			t_philo_status;
 
