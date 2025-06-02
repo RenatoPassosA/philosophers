@@ -13,13 +13,13 @@ SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_
 
 #NUMBERS					=	4 10 200 100	#One philosopher should die
 
-#NUMBERS					=	5 410 200 100 7 # One philosopher should die.
+#NUMBERS					=	5 410 200 100 7 # One philosopher should die. N sei se morre ou todos comem
 #NUMBERS					=	5 120 80 80 	# Moana tolds all will die
 #NUMBERS					=	2 200 50 50 1
 #NUMBERS					=	50 1000 60 60 1
 #NUMBERS					=	2 110 50 50 2
 
-#NUMBERS					=	4 200 205 200	# One should die
+#NUMBERS					=	4 200 205 200	# One should die X
 #NUMBERS					=	4 410 200 200 10	# No one should die. Stop after 10
 #NUMBERS					=	-5 600 200 200	# ERROR - CRASH
 #NUMBERS					=	5 -5 200 200	# ERROR - CRASH
@@ -51,6 +51,6 @@ run: re
 	./$(NAME) $(NUMBERS)
 
 compile:
-	$(CC) main.c check_args.c getters_and_setters.c print_message.c routine.c start_data.c start_dinner.c sync_utils.c utils.c -o $(NAME) -g
+	$(CC) main.c check_args.c getters_and_setters.c print_message.c routine.c start_data.c start_dinner.c sync_utils.c monitor.c utils.c -o $(NAME) -g -O0 -pthread
 
 .PHONY: all bonus clean fclean

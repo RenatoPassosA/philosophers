@@ -27,7 +27,7 @@ static void    start_philos(char **av, t_table *table, t_philo *philos)
         	philos[index].r_fork = &table->forks[index]; 
         	philos[index].l_fork = &table->forks[(index + 1) % table->num_of_philos];
 		}
-        pthread_mutex_init(&philos->philo_mutex, NULL);
+        pthread_mutex_init(&philos[index].philo_mutex, NULL);
         philos[index].table = table;
         index++;
     }

@@ -64,7 +64,7 @@ void		wait_threads_creation(t_table *table);
 void    	start_data(t_table *table, char **av);
 void		precise_usleep(long usec, t_table *table);
 bool		get_bool(pthread_mutex_t *mutex, bool *value);
-long long   get_llong(pthread_mutex_t *mutex, bool *value);
+long long   get_llong(pthread_mutex_t *mutex, long long *value);
 void	    print_status(t_philo_status status, t_philo *philo);
 void		set_bool(pthread_mutex_t *mutex, bool *dest, bool value);
 void    	set_llong(pthread_mutex_t *mutex, long long  *dest, long long  value);
