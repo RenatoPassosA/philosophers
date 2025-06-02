@@ -17,10 +17,10 @@ void    print_status(t_philo_status status, t_philo *philo)
         printf("%-6lld %lld is sleeping\n", elapsed, philo->id);
     else if (status == THINKING && !simulation_finished(philo->table))
         printf("%-6lld %lld is thinking\n", elapsed, philo->id);
-    else if (status == DIED  && !simulation_finished(philo->table))
+    else if (status == DIED)
     {
         printf("%-6lld %lld died\n", elapsed, philo->id);
-        set_bool(&philo->table->table_mutex, &philo->table->end_dinner, true);
+        //set_bool(&philo->table->table_mutex, &philo->table->end_dinner, true);
     }
     pthread_mutex_unlock(&philo->table->print_action);
 }

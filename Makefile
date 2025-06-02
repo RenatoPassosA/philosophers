@@ -13,7 +13,7 @@ SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_
 
 #NUMBERS					=	4 10 200 100	#One philosopher should die
 
-#NUMBERS					=	5 410 200 100 7 # One philosopher should die. N sei se morre ou todos comem
+#NUMBERS					=	5 410 200 100 7 # One philosopher should die.
 #NUMBERS					=	5 120 80 80 	# Moana tolds all will die
 #NUMBERS					=	2 200 50 50 1
 #NUMBERS					=	50 1000 60 60 1

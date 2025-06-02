@@ -35,6 +35,8 @@ typedef struct s_philo
     long long				last_meal_time;
     bool					is_dead; 
 	bool					is_full;
+	long long				right_fork;
+	long long				left_fork;
 	pthread_mutex_t			*l_fork;
 	pthread_mutex_t			*r_fork;
 	pthread_mutex_t			philo_mutex;

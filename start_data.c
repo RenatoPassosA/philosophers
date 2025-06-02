@@ -5,7 +5,7 @@ long long	get_timestamp_ms(void)
 	struct timeval	start_time;
 
 	gettimeofday(&start_time, NULL);
-	return ((start_time.tv_sec * 1000LL) + (start_time.tv_usec / 1000));
+	return ((start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
 }
 
 static void    start_philos(char **av, t_table *table, t_philo *philos)
@@ -15,11 +15,14 @@ static void    start_philos(char **av, t_table *table, t_philo *philos)
     index = 0;
     while (index < table->num_of_philos)
     {
+        philos[index].thread = 0;
         philos[index].id = index + 1;
         philos[index].meals_eaten = 0;
         philos[index].last_meal_time = table->start_time;
         philos[index].is_dead = false;
 		philos[index].is_full = false;
+        philos[index].right_fork = 0;
+        philos[index].left_fork = 0;
 		philos[index].r_fork = &table->forks[(index + 1) % table->num_of_philos];
         philos[index].l_fork = &table->forks[index];
 		if (philos[index].id % 2 == 0)
