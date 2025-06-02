@@ -27,6 +27,7 @@ typedef struct s_table
 	t_philo						*philos;
 		
 }				t_table;
+
 typedef struct s_philo
 {
 	pthread_t				thread;
@@ -57,12 +58,12 @@ long long	ft_atoll(char *s);
 void		*routine(void *arg);
 long long	get_timestamp_ms(void);
 void    	monitor(t_table *table);
+void	    clean_all(t_table *table);
 void		exit_error_msg(char *str);
 void		start_dinner(t_table *table);
 bool		check_args(int ac, char **av);
 int			ft_strcmp(char *s1, char *s2);
 bool		simulation_finished(t_table *table);
-void		wait_threads_creation(t_table *table);
 void    	start_data(t_table *table, char **av);
 void		precise_usleep(long usec, t_table *table);
 bool		get_bool(pthread_mutex_t *mutex, bool *value);

@@ -58,10 +58,10 @@ void    start_table(char **av, t_table *table, t_philo *philos)
 		free(philos);
         exit_error_msg("Allocation Failed");;
 	}
-    pthread_mutex_init(&table->table_mutex, NULL); //encapsular para tratar erro em caso de criação
-    pthread_mutex_init(&table->print_action, NULL); //encapsular para tratar erro em caso de criação
+    pthread_mutex_init(&table->table_mutex, NULL);
+    pthread_mutex_init(&table->print_action, NULL);
     while (++index < table->num_of_philos)
-        pthread_mutex_init(&table->forks[index], NULL); //encapsular para tratar erro em caso de criação
+        pthread_mutex_init(&table->forks[index], NULL);
     start_philos(av, table, philos);
 }
 

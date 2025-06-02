@@ -1,7 +1,7 @@
 NAME = philosophers
 CC = cc
 CCFLAGS = -Wall -Wextra -Werror -g -ggdb
-SRC = main.o check_args.o getters_and_setters.o print_message.o routine.o start_data.o start_dinner.o sync_utils.o monitor.o utils.o
+SRC = main.o check_args.o getters_and_setters.o routine.o start_data.o start_dinner.o monitor.o utils.o
 
 
 
@@ -51,6 +51,6 @@ run: re
 	./$(NAME) $(NUMBERS)
 
 compile:
-	$(CC) main.c check_args.c getters_and_setters.c print_message.c routine.c start_data.c start_dinner.c sync_utils.c monitor.c utils.c -o $(NAME) -g -O0 -pthread
+	$(CC) main.c check_args.c getters_and_setters.c routine.c start_data.c start_dinner.c monitor.c utils.c -o $(NAME) -g -O0 -pthread
 
 .PHONY: all bonus clean fclean

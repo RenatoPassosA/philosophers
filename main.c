@@ -14,6 +14,9 @@ has its own memory and file resources
 operates independently of other process
 consisting of its own address space, code, data, and system resources
 */
+
+//valgrind --tool=helgrind -s ./philosophers 4 410 200 200 10
+
 int	main(int ac, char **av)
 {
 	t_table table;

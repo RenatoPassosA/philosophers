@@ -6,7 +6,7 @@
 /*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 15:56:54 by rpassos-          #+#    #+#             */
-/*   Updated: 2025/06/02 16:52:31 by rpassos-         ###   ########.fr       */
+/*   Updated: 2025/06/02 19:08:33 by rpassos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,20 @@ void	precise_usleep(long usec, t_table *table)
 			break;
 		usleep(100);
 	}
+}
+
+void    clean_all(t_table *table)
+{
+    int index;
+
+    index = -1;
+    pthread_mutex_destroy(&table->table_mutex);
+    pthread_mutex_destroy(&table->print_action);
+    while(++index < table->num_of_philos)
+    {
+        pthread_mutex_destroy(&table->philos[index].philo_mutex);
+        pthread_mutex_destroy(&table->forks[index]);
+    }
+    free(table->forks);
+    free(table->philos);
 }

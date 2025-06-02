@@ -1,5 +1,14 @@
 #include "philo.h"
 
+static void    wait_threads_creation(t_table *table)
+{
+    while (!get_bool(&table->table_mutex, &table->all_threads_ready))
+	{
+		usleep(1);
+        continue;
+	}
+}
+
 static void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
@@ -28,14 +37,12 @@ void	*routine(void *arg)
 	while (1)
 	{
 		if (get_bool(&philo->philo_mutex, &philo->is_full))
-		{
-			printf("----------------------------------philo id: %lld is full\n", philo->id);
 			break;
-		}
 		eat(philo);
 		print_status(SLEEPING, philo);
 		precise_usleep(philo->table->time_to_sleep, philo->table);
 		print_status(THINKING, philo);
+		usleep(1);
 	}
 	return (NULL);
 }
