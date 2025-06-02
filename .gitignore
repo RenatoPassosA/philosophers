@@ -1,0 +1,9 @@
+# Ignorar arquivos objeto
+*.o
+
+# Ignorar arquivos de texto
+*.txt
+
+# Ignorar executáveis
+a.out
+*.exe
