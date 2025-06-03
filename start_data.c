@@ -6,6 +6,7 @@ long long	get_timestamp_ms(void)
 
 	gettimeofday(&start_time, NULL);
 	return ((start_time.tv_sec * 1000) + (start_time.tv_usec / 1000));
+	//retorna em mili
 }
 
 static void    start_philos(char **av, t_table *table, t_philo *philos)
@@ -42,9 +43,9 @@ void    start_table(char **av, t_table *table, t_philo *philos)
 
     index = -1;
     table->num_of_philos = ft_atoll(av[1]);
-	table->time_to_die = ft_atoll(av[2]) * 1000;
-    table->time_to_eat = ft_atoll(av[3]) * 1000;
-    table->time_to_sleep  = ft_atoll(av[4]) * 1000;
+	table->time_to_die = ft_atoll(av[2]) * 1000; //micro
+    table->time_to_eat = ft_atoll(av[3]) * 1000; //micro
+    table->time_to_sleep  = ft_atoll(av[4]) * 1000; //micro
 	if (av[5] && av[5][0])
 		table->number_of_meals = ft_atoll(av[5]);
 	else

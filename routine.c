@@ -11,6 +11,14 @@ static void    wait_threads_creation(t_table *table)
 
 static void	eat(t_philo *philo)
 {
+	if (philo->table->num_of_philos == 1)
+	{
+		pthread_mutex_lock(philo->r_fork);
+    	print_status(TAKE_RIGHT_FORK, philo);
+		precise_usleep(philo->table->time_to_die, philo->table);
+		pthread_mutex_unlock(philo->r_fork);
+		return;
+	}
 	pthread_mutex_lock(philo->r_fork);
 	set_llong(&philo->philo_mutex, &philo->right_fork, 1);
 	print_status(TAKE_RIGHT_FORK, philo);
@@ -34,7 +42,7 @@ void	*routine(void *arg)
 	t_philo *philo = (t_philo *)arg;
 
 	wait_threads_creation(philo->table);
-	while (1)
+	while (!simulation_finished(philo->table))
 	{
 		if (get_bool(&philo->philo_mutex, &philo->is_full))
 			break;
@@ -44,5 +52,9 @@ void	*routine(void *arg)
 		print_status(THINKING, philo);
 		usleep(1);
 	}
+	if (get_llong(&philo->philo_mutex, &philo->right_fork) == 1)
+		pthread_mutex_unlock(philo->r_fork);
+	if (get_llong(&philo->philo_mutex, &philo->left_fork) == 1)
+		pthread_mutex_unlock(philo->l_fork);
 	return (NULL);
 }

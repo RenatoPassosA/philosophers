@@ -1,25 +1,13 @@
 #include "philo.h"
 
-static void	check_forks(t_philo *philo)
+static void	set_all_philos_full(t_philo *philo)
 {
 	int	index;
 
-	index = 0;
-	while (index < philo->table->num_of_philos)
-	{
-		if (philo[index].right_fork == 1)
-		{
-			set_llong(&philo->philo_mutex, &philo->right_fork, 0);	
-			pthread_mutex_unlock(philo->r_fork);
-		}
-		if (philo[index].left_fork == 1)
-		{
-			set_llong(&philo->philo_mutex, &philo->left_fork, 0);
-			pthread_mutex_unlock(philo->l_fork);
-		}
+	index = -1;
+	while (++index < philo->table->num_of_philos)
 		set_bool(&philo[index].philo_mutex, &philo[index].is_full, true);
-		index++;
-	}
+
 }
 
 static bool philo_died(t_philo *philo)
@@ -58,7 +46,7 @@ void    monitor(t_table *table)
 		if (philo_died(&table->philos[index]))
 		{
 			print_status(DIED, &table->philos[index]);
-			check_forks(table->philos);
+			set_all_philos_full(table->philos);
 			set_bool(&table->table_mutex, &table->end_dinner, true);
 			break;
 		}
@@ -66,6 +54,7 @@ void    monitor(t_table *table)
 			philos_full++;
 		if (philos_full == table->num_of_philos)
 		{
+			//printf("TODOS CHEIOS\n");
 			set_bool(&table->table_mutex, &table->end_dinner, true);
 			break;
 		}
