@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpassos- <rpassos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/05 13:48:40 by rpassos-          #+#    #+#             */
+/*   Updated: 2025/06/05 13:48:41 by rpassos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 long long	ft_atoll(char *s)
 {
 	long long int	result;
-	
+
 	result = 0;
 	while (*s)
 	{
@@ -35,11 +47,11 @@ static bool	is_only_num(char *str)
 static bool	check_value(long long value)
 {
 	if (value < INT_MIN)
-		return(false);
+		return (false);
 	if (value > INT_MAX)
-		return(false);
+		return (false);
 	if (value < 0)
-		return(false);
+		return (false);
 	return (true);
 }
 
